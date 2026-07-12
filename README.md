@@ -1,4 +1,4 @@
-# Enkinex ODPS — a KCL library for the Open Data Product Standard
+# Enkinex ODPS — Data Product as Code Library
 
 [![Standard](https://img.shields.io/badge/ODPS-v1.0.0-blue)](https://github.com/bitol-io/open-data-contract-standard/tree/v3.1.0)
 [![KCL](https://img.shields.io/badge/KCL-%E2%89%A5%200.12.4-7B68EE)](https://www.kcl-lang.io/)
