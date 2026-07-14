@@ -7,10 +7,10 @@ import product.input
 import product.output
 
 type KindType = "DataProduct"
-type ApiVersionType = "v1.0.0"
+type ApiVersionType = "v0.9.0" | "v1.0.0"
 type StatusType = "proposed" | "draft" | "active" | "deprecated" | "retired"
 
-schema DataProduct:
+schema DataProduct(common.Taggable):
     r"""
     An open data product standard descriptor to enable defining data products.
 
@@ -26,20 +26,14 @@ schema DataProduct:
         Name of the data product.
     version : str, optional
         Current version of the data product. Not required, but highly recommended.
-    status : str, required
+    status : "proposed" | "draft" | "active" | "deprecated" | "retired", required
         Current status of the data product.
     domain : str, optional
         Business domain
     tenant : str, optional
         Organization identifier
-    authoritativeDefinitions : [AuthoritativeDefinition], optional
-        List of links to sources that provide more details on the data contract.
     description : Description, optional
         Object containing the descriptions.
-    customProperties : [CustomProperty], optional
-        A list of key/value pairs for custom properties.
-    tags : [str], optional
-        A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.
     inputPorts : [InputPort], optional
         List of objects describing an input port. You need at least one as a data product needs to get data somewhere.
     outputPorts : [OutputPort], optional
@@ -52,20 +46,22 @@ schema DataProduct:
         Team information.
     productCreatedTs : str, optional
         Timestamp in UTC of when the data product was created, using ISO 8601.
+    tags : Tags, optional
+        A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.
+    customProperties : [CustomProperty], optional
+        A list of key/value pairs for custom properties.
+    authoritativeDefinitions : [AuthoritativeDefinition], optional
+        List of links to sources that provide more details on the data contract.
     """
-
-    apiVersion: "v0.9.0" | "v1.0.0" = "v1.0.0"
-    kind: "DataProduct" = "DataProduct"
+    apiVersion: ApiVersionType = "v1.0.0"
+    kind: KindType = "DataProduct"
     id: str
     name?: str
     version?: str
-    status: str
+    status: StatusType
     domain?: str
     tenant?: str
-    authoritativeDefinitions?: [common.AuthoritativeDefinition]
     description?: common.Description
-    customProperties?: [common.CustomProperty]
-    tags?: [str]
     inputPorts?: [input.InputPort]
     outputPorts?: [output.OutputPort]
     managementPorts?: [management.ManagementPort]
@@ -75,3 +71,4 @@ schema DataProduct:
 
     check:
         regex.match(productCreatedTs, r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$") if productCreatedTs
+

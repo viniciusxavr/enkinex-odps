@@ -1,6 +1,7 @@
+import regex
 import common
 
-schema TeamMember:
+schema TeamMember(common.Taggable):
     r"""
     Team member information.
 
@@ -15,9 +16,9 @@ schema TeamMember:
     role : str, optional
         The user's job role; Examples might be owner, data steward. There is no limit on the role.
     dateIn : str, optional
-        The date when the user joined the team.
+        The date when the user joined the team, using the ISO 8601 date format (YYYY-MM-DD).
     dateOut : str, optional
-        The date when the user ceased to be part of the team.
+        The date when the user ceased to be part of the team, using the ISO 8601 date format (YYYY-MM-DD).
     replacedByUsername : str, optional
         The username of the user who replaced the previous user.
     tags : [str], optional
@@ -27,7 +28,6 @@ schema TeamMember:
     authoritativeDefinitions : [AuthoritativeDefinition], optional
         Authoritative definitions block.
     """
-
     username: str
     name?: str
     description?: str
@@ -35,6 +35,8 @@ schema TeamMember:
     dateIn?: str
     dateOut?: str
     replacedByUsername?: str
-    tags?: [str]
-    customProperties?: [common.CustomProperty]
-    authoritativeDefinitions?: [common.AuthoritativeDefinition]
+
+    check:
+        regex.match(dateIn, r"^\d{4}-\d{2}-\d{2}$") if dateIn
+        regex.match(dateOut, r"^\d{4}-\d{2}-\d{2}$") if dateOut
+

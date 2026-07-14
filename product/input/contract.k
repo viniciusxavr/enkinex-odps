@@ -9,6 +9,6 @@ schema InputContract:
     version : str, required
         Version of the input contract.
     """
-
     id: str
     version: str
+

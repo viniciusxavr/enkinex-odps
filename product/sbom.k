@@ -12,9 +12,9 @@ schema Sbom:
     url : str, required
         URL to the SBOM.
     """
-
     $type?: str = "external"
     url: str
 
     check:
         regex.match(url, common.urlPattern)
+

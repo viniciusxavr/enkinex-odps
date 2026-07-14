@@ -1,7 +1,7 @@
 import regex
 import common
 
-schema Support:
+schema Support(common.Taggable):
     r"""
     Support channel.
 
@@ -19,24 +19,21 @@ schema Support:
         Scope can be: `interactive`, `announcements`, `issues`.
     invitationUrl : str, optional
         Some tools uses invitation URL for requesting or subscribing. Follows the URL scheme.
-    tags : [str], optional
+    tags : Tags, optional
         A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.
     customProperties : [CustomProperty], optional
         Custom properties block.
     authoritativeDefinitions : [AuthoritativeDefinition], optional
         Authoritative definitions block.
     """
-
     channel: str
     url: str
     description?: str
     tool?: str
     scope?: str
     invitationUrl?: str
-    tags?: [str]
-    customProperties?: [common.CustomProperty]
-    authoritativeDefinitions?: [common.AuthoritativeDefinition]
 
     check:
         regex.match(url, common.urlPattern)
         regex.match(invitationUrl, common.urlPattern) if invitationUrl
+

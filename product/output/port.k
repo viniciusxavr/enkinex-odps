@@ -2,7 +2,7 @@ import common
 import product
 import product.input
 
-schema OutputPort:
+schema OutputPort(common.Taggable):
     r"""
     An output port describing promises.
 
@@ -22,14 +22,13 @@ schema OutputPort:
         The SBOM can/should be at the version level.
     inputContracts : [InputContract], optional
         Dependencies or input contracts.
-    tags : [str], optional
+    tags : Tags, optional
         A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.
     customProperties : [CustomProperty], optional
         Custom properties block.
     authoritativeDefinitions : [AuthoritativeDefinition], optional
         Authoritative definitions block.
     """
-
     name: str
     description?: str
     $type?: str
@@ -37,6 +36,4 @@ schema OutputPort:
     contractId?: str
     sbom?: [product.Sbom]
     inputContracts?: [input.InputContract]
-    tags?: [str]
-    customProperties?: [common.CustomProperty]
-    authoritativeDefinitions?: [common.AuthoritativeDefinition]
+

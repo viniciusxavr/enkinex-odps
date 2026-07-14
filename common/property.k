@@ -11,7 +11,7 @@ schema CustomProperty:
     description : str, optional
         Optional description.
     """
-
     property: str
     value: any
     description?: str
+

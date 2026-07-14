@@ -7,6 +7,8 @@
   - [AuthoritativeDefinition](#authoritativedefinition)
   - [CustomProperty](#customproperty)
   - [Description](#description)
+  - [Extensible](#extensible)
+  - [Taggable](#taggable)
 - management
   - [ManagementPort](#managementport)
 - product
@@ -44,7 +46,7 @@ An open data product standard descriptor to enable defining data products.
 |**name**|str|Name of the data product.||
 |**outputPorts**|[[OutputPort](#outputport)]|List of objects describing an output port. You need at least one, as a data product without output is useless.||
 |**productCreatedTs**|str|Timestamp in UTC of when the data product was created, using ISO 8601.||
-|**status** `required`|str|Current status of the data product.||
+|**status** `required`|"proposed" \| "draft" \| "active" \| "deprecated" \| "retired"|Current status of the data product.||
 |**support**|[[Support](#support)]|Support and communication channels.||
 |**tags**|[str]|A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.||
 |**team**|[Team](#team)|Team information.||
@@ -85,6 +87,27 @@ Object containing the descriptions.
 |**limitations**|str|Technical, compliance, and legal limitations for data use.||
 |**purpose**|str|Intended purpose for the provided data.||
 |**usage**|str|Recommended usage of the data.||
+### Extensible
+
+Base schema providing the common extension points shared across ODPS elements: custom properties and authoritative definitions.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
+### Taggable
+
+Base schema providing the common extension points shared across ODPS elements: tags, custom properties and authoritative definitions.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
+|**tags**|[str]|A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.||
 ### ManagementPort
 
 Management port for managing the data product.
@@ -93,10 +116,10 @@ Management port for managing the data product.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|Authoritative definitions block.||
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
 |**channel**|str|Channel to communicate with the data product.||
 |**content** `required`|str|Content type.||
-|**customProperties**|[[CustomProperty](#customproperty)]|Custom properties block.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
 |**description**|str|Purpose and usage.||
 |**name** `required`|str|Endpoint identifier or unique name.||
 |**tags**|[str]|A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.||
@@ -130,9 +153,9 @@ An input port describing expectations.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|Authoritative definitions block.||
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
 |**contractId** `required`|str|Contract ID for the input port.||
-|**customProperties**|[[CustomProperty](#customproperty)]|Custom properties block.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
 |**name** `required`|str|Name of the input port.||
 |**tags**|[str]|A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.||
 |**version** `required`|str|Version of the input port.||
@@ -144,9 +167,9 @@ An output port describing promises.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|Authoritative definitions block.||
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
 |**contractId**|str|Contract ID for the output port.||
-|**customProperties**|[[CustomProperty](#customproperty)]|Custom properties block.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
 |**description**|str|Human readable short description of the output port.||
 |**inputContracts**|[[InputContract](#inputcontract)]|Dependencies or input contracts.||
 |**name** `required`|str|Name of the output port.||
@@ -162,9 +185,9 @@ Support channel.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|Authoritative definitions block.||
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
 |**channel** `required`|str|Channel name or identifier.||
-|**customProperties**|[[CustomProperty](#customproperty)]|Custom properties block.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
 |**description**|str|Description of the channel, free text.||
 |**invitationUrl**|str|Some tools uses invitation URL for requesting or subscribing. Follows the URL scheme.||
 |**scope**|str|Scope can be: `interactive`, `announcements`, `issues`.||
@@ -179,8 +202,8 @@ Team information.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|Authoritative definitions block.||
-|**customProperties**|[[CustomProperty](#customproperty)]|Custom properties block.||
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
 |**description**|str|Team description.||
 |**members**|[[TeamMember](#teammember)]|List of members.||
 |**name**|str|Team name.||
@@ -193,10 +216,10 @@ Team member information.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|Authoritative definitions block.||
-|**customProperties**|[[CustomProperty](#customproperty)]|Custom properties block.||
-|**dateIn**|str|The date when the user joined the team.||
-|**dateOut**|str|The date when the user ceased to be part of the team.||
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
+|**dateIn**|str|The date when the user joined the team, using the ISO 8601 date format (YYYY-MM-DD).||
+|**dateOut**|str|The date when the user ceased to be part of the team, using the ISO 8601 date format (YYYY-MM-DD).||
 |**description**|str|The user&#39;s description.||
 |**name**|str|The user&#39;s name.||
 |**replacedByUsername**|str|The username of the user who replaced the previous user.||

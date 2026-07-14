@@ -1,4 +1,4 @@
-schema Description:
+schema Description(Extensible):
     r"""
     Object containing the descriptions.
 
@@ -15,9 +15,7 @@ schema Description:
     customProperties : [CustomProperty], optional
         A list of key/value pairs for custom properties.
     """
-
     purpose?: str
     limitations?: str
     usage?: str
-    authoritativeDefinitions?: [AuthoritativeDefinition]
-    customProperties?: [CustomProperty]
+

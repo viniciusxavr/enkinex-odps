@@ -13,10 +13,10 @@ schema AuthoritativeDefinition:
     description : str, optional
         Optional description.
     """
-
     $type: str
     url: str
     description?: str
 
     check:
         regex.match(url, urlPattern)
+
