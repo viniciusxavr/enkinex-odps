@@ -1,0 +1,45 @@
+apiVersion: v1.0.0
+kind: DataProduct
+id: 55555555-5555-4555-8555-555555555555
+name: Management Port Test
+status: retired
+
+managementPorts:
+  - name: discovery-endpoint
+    content: discoverability
+    type: rest
+    url: "https://api.enkinex.example/discovery"
+    description: "REST endpoint for catalog discoverability"
+  - name: metrics-endpoint
+    content: observability
+    type: rest
+    url: "https://metrics.enkinex.example/observability"
+    description: "Metrics and monitoring endpoint"
+    tags: ["observability", "metrics"]
+    customProperties:
+      - property: scrapeIntervalSeconds
+        value: 30
+    authoritativeDefinitions:
+      - type: implementation
+        url: "https://git.enkinex.example/repo/metrics-impl"
+  - name: control-endpoint
+    content: control
+    type: rest
+    url: "https://api.enkinex.example/control"
+    channel: "internal-ops"
+    description: "Control plane endpoint for lifecycle operations"
+  - name: dictionary-updates
+    content: dictionary
+    type: topic
+    channel: "tpc-dict-update"
+    description: "Kafka topic broadcasting dictionary updates"
+    tags: ["kafka", "dictionary"]
+    customProperties:
+      - property: kafkaCluster
+        value: "prod-eu-west-1"
+    authoritativeDefinitions:
+      - type: businessDefinition
+        url: "https://glossary.enkinex.example/dictionary-topic"
+  - name: default-type-endpoint
+    content: discoverability
+    url: "https://api.enkinex.example/default-type"

@@ -1,0 +1,34 @@
+apiVersion: v0.9.0
+kind: DataProduct
+id: 44444444-4444-4444-8444-444444444444
+name: Output Port Test
+status: deprecated
+
+outputPorts:
+  - name: minimal-output
+    version: 1.0.0
+  - name: full-output
+    description: "Fully populated output port for stress testing"
+    type: tables
+    version: 3.0.0
+    contractId: bbbbbbbb-0000-4000-8000-000000000001
+    sbom:
+      - url: "https://sbom.enkinex.example/default-type.json"
+      - type: internal
+        url: "https://sbom.enkinex.example/internal.json"
+    inputContracts:
+      - id: cccccccc-0000-4000-8000-000000000001
+        version: 1.0.0
+      - id: cccccccc-0000-4000-8000-000000000002
+        version: 2.4.0
+    tags: ["output", "curated", "gold"]
+    customProperties:
+      - property: refreshFrequency
+        value: "daily"
+      - property: rowCountApprox
+        value: 1500000
+    authoritativeDefinitions:
+      - type: businessDefinition
+        url: "https://glossary.enkinex.example/output-port"
+      - type: tutorial
+        url: "https://docs.enkinex.example/output-port-tutorial"

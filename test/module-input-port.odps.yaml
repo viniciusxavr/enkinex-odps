@@ -1,0 +1,27 @@
+apiVersion: v1.0.0
+kind: DataProduct
+id: 33333333-3333-4333-8333-333333333333
+name: Input Port Test
+status: active
+
+inputPorts:
+  - name: minimal-input
+    version: 1.0.0
+    contractId: aaaaaaaa-0000-4000-8000-000000000001
+  - name: full-input
+    version: 2.1.0
+    contractId: aaaaaaaa-0000-4000-8000-000000000002
+    tags: ["input", "kafka", "streaming"]
+    customProperties:
+      - property: partitionCount
+        value: 12
+      - property: retentionDays
+        value: 7
+      - property: compacted
+        value: true
+    authoritativeDefinitions:
+      - type: businessDefinition
+        url: "https://glossary.enkinex.example/input-port"
+      - type: implementation
+        url: "https://git.enkinex.example/repo/input-port-impl"
+        description: "Kafka topic implementation"
