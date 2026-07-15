@@ -4,7 +4,7 @@
 
 | KCL Schema | Upstream ODCS Entity | Notes |
 |---|---|---|
-| `OutputPort` (`product/output/port.k`) | `$defs.OutputPort` | Inherits `common.Taggable`; composes `product.Sbom` and `input.InputContract` |
+| `OutputPort` (`product/output/port.k`) | `$defs.OutputPort` | Inherits `common.TagsDiscoverable`; composes `product.Sbom` and `input.InputContract` |
 
 ## Architecture Decisions
 

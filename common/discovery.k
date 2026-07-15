@@ -1,21 +1,6 @@
 type Tags = [str]
 
-schema Extensible:
-    r"""
-    Base schema providing the common extension points shared across ODPS
-    elements: custom properties and authoritative definitions.
-
-    Attributes
-    ----------
-    customProperties : [CustomProperty], optional
-        A list of key/value pairs for custom properties.
-    authoritativeDefinitions : [AuthoritativeDefinition], optional
-        List of links to sources that provide more details on the data contract.
-    """
-    customProperties?: [CustomProperty]
-    authoritativeDefinitions?: [AuthoritativeDefinition]
-
-schema Taggable(Extensible):
+schema TagsDiscoverable(AuthoritativeCustomizable):
     r"""
     Base schema providing the common extension points shared across ODPS
     elements: tags, custom properties and authoritative definitions.
@@ -30,4 +15,3 @@ schema Taggable(Extensible):
         List of links to sources that provide more details on the data contract.
     """
     tags?: Tags
-

@@ -1,4 +1,4 @@
-schema Description(Extensible):
+schema Description(AuthoritativeCustomizable):
     r"""
     Object containing the descriptions.
 

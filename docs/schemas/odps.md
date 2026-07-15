@@ -11,7 +11,7 @@
 
 ## Architecture Decisions
 
-- `DataProduct` inherits `common.Taggable` (see [[common]]) instead of repeating `tags`/`customProperties`/`authoritativeDefinitions` inline. The docstring still lists all three so `kcl doc generate` output stays complete for consumers of the generated docs.
+- `DataProduct` inherits `common.TagsDiscoverable` (see [[common]]) instead of repeating `tags`/`customProperties`/`authoritativeDefinitions` inline. The docstring still lists all three so `kcl doc generate` output stays complete for consumers of the generated docs.
 - `status` was promoted from an open `str` to the closed `StatusType` union, even though upstream only gives it `examples`, not an `enum`: unlike `ManagementPort.type`/`.content`, `Support.tool`/`.scope`, and `AuthoritativeDefinition.type`, which stay open `str` despite being `examples`-only too. This is a deliberate, non-uniform call: `status` is a small, stable lifecycle enum that most consumers branch on, so closing it catches typos early. The other `examples` fields are open-ended vocabularies (support tool names, management-port content types) where new values are expected to appear in practice before the spec (or this port) catches up.
 - `productCreatedTs` keeps its own inline ISO-8601 date-time regex `check` rather than sharing a "Timestamp" alias with `team.TeamMember`'s date-only checks: the two formats differ (date-time vs. date-only) and there was only one date-time consumer, so a shared abstraction wasn't justified yet.
 

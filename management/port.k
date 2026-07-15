@@ -1,7 +1,7 @@
 import regex
 import common
 
-schema ManagementPort(common.Taggable):
+schema ManagementPort(common.TagsDiscoverable):
     r"""
     Management port for managing the data product.
 

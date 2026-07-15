@@ -4,11 +4,11 @@
 
 | KCL Schema | Upstream ODCS Entity | Notes |
 |---|---|---|
-| `ManagementPort` (`management/port.k`) | `$defs.ManagementPort` | Inherits `common.Taggable` |
+| `ManagementPort` (`management/port.k`) | `$defs.ManagementPort` | Inherits `common.TagsDiscoverable` |
 
 ## Architecture Decisions
 
-- Inherits `common.Taggable` for the `tags`/`customProperties`/`authoritativeDefinitions` trio (see [[common]]); only `name`, `content`, `$type`, `url`, `channel`, `description` remain schema-local, matching exactly what upstream lists beyond that trio.
+- Inherits `common.TagsDiscoverable` for the `tags`/`customProperties`/`authoritativeDefinitions` trio (see [[common]]); only `name`, `content`, `$type`, `url`, `channel`, `description` remain schema-local, matching exactly what upstream lists beyond that trio.
 - `$type`/`content` stay open `str`: upstream gives them `examples` only (`rest`/`topic` and `discoverability`/`observability`/`control`/`dictionary` respectively), not an `enum`, and both are illustrative rather than exhaustive; new management-port content types are expected as the ecosystem matures.
 - `url` is optional here (unlike `Support.url`, which is required) and is validated only when present, via `regex.match(url, common.urlPattern) if url`: this mirrors upstream, where `url` isn't in `ManagementPort`'s `required` list.
 

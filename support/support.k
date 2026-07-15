@@ -1,7 +1,7 @@
 import regex
 import common
 
-schema Support(common.Taggable):
+schema Support(common.TagsDiscoverable):
     r"""
     Support channel.
 

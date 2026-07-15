@@ -1,6 +1,6 @@
 import common
 
-schema Team(common.Taggable):
+schema Team(common.TagsDiscoverable):
     r"""
     Team information.
 

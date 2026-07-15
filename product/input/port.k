@@ -1,6 +1,6 @@
 import common
 
-schema InputPort(common.Taggable):
+schema InputPort(common.TagsDiscoverable):
     r"""
     An input port describing expectations.
 

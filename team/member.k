@@ -1,7 +1,7 @@
 import regex
 import common
 
-schema TeamMember(common.Taggable):
+schema TeamMember(common.TagsDiscoverable):
     r"""
     Team member information.
 

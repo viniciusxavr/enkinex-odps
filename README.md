@@ -92,7 +92,7 @@ The library is composed of seven modules plus a root data product:
 
 | Module                | Purpose                                                                                                                                                                                                  | Detailed docs                                                    |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| **`common`**           | Cross-cutting building blocks reused everywhere: `CustomProperty`, `Description`, `AuthoritativeDefinition`, `Tags`, and the `Extensible`/`Taggable` base schemas that other modules inherit from.      | [docs/schemas/common.md](docs/schemas/common.md)                  |
+| **`common`**           | Cross-cutting building blocks reused everywhere: `CustomProperty`, `Description`, `AuthoritativeDefinition`, `Tags`, and the `AuthoritativeCustomizable`/`TagsDiscoverable` base schemas that other modules inherit from.      | [docs/schemas/common.md](docs/schemas/common.md)                  |
 | **`management`**       | `ManagementPort`: access points for managing the data product itself (e.g. REST or topic endpoints).                                                                                                   | [docs/schemas/management.md](docs/schemas/management.md)          |
 | **`product`**          | `Sbom`: a shared building block (Software Bill of Materials) kept in its own package so both `product.input` and `product.output` can depend on `product` without a circular import.                  | [docs/schemas/product.md](docs/schemas/product.md)                |
 | **`product.input`**    | `InputPort` and `InputContract`: what a data product consumes.                                                                                                                                          | [docs/schemas/product-input.md](docs/schemas/product-input.md)    |
@@ -104,7 +104,7 @@ The library is composed of seven modules plus a root data product:
 The root `DataProduct` in [`odps.k`](odps.k) defaults `apiVersion` to `"v1.0.0"` and pins `kind = "DataProduct"`,
 closes `status` to a fixed lifecycle set (`proposed`/`draft`/`active`/`deprecated`/`retired`), and wires in the
 module schemas (`inputPorts`, `outputPorts`, `managementPorts`, `support`, `team`): while inheriting the shared
-`tags`, `customProperties`, and `authoritativeDefinitions` blocks from the `common` module via `common.Taggable`.
+`tags`, `customProperties`, and `authoritativeDefinitions` blocks from the `common` module via `common.TagsDiscoverable`.
 
 > The **design decisions and trade-offs** behind each module are
 > documented per module under [`docs/schemas/`](docs/schemas/).

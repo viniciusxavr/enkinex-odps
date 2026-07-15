@@ -4,11 +4,11 @@
 
 - [DataProduct](#dataproduct)
 - common
+  - [AuthoritativeCustomizable](#authoritativecustomizable)
   - [AuthoritativeDefinition](#authoritativedefinition)
   - [CustomProperty](#customproperty)
   - [Description](#description)
-  - [Extensible](#extensible)
-  - [Taggable](#taggable)
+  - [TagsDiscoverable](#tagsdiscoverable)
 - management
   - [ManagementPort](#managementport)
 - product
@@ -52,6 +52,16 @@ An open data product standard descriptor to enable defining data products.
 |**team**|[Team](#team)|Team information.||
 |**tenant**|str|Organization identifier||
 |**version**|str|Current version of the data product. Not required, but highly recommended.||
+### AuthoritativeCustomizable
+
+Base schema providing the common extension points shared across ODPS elements: custom properties and authoritative definitions.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
+|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
 ### AuthoritativeDefinition
 
 A type/link pair for authoritative definitions.
@@ -87,17 +97,7 @@ Object containing the descriptions.
 |**limitations**|str|Technical, compliance, and legal limitations for data use.||
 |**purpose**|str|Intended purpose for the provided data.||
 |**usage**|str|Recommended usage of the data.||
-### Extensible
-
-Base schema providing the common extension points shared across ODPS elements: custom properties and authoritative definitions.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**authoritativeDefinitions**|[[AuthoritativeDefinition](#authoritativedefinition)]|List of links to sources that provide more details on the data contract.||
-|**customProperties**|[[CustomProperty](#customproperty)]|A list of key/value pairs for custom properties.||
-### Taggable
+### TagsDiscoverable
 
 Base schema providing the common extension points shared across ODPS elements: tags, custom properties and authoritative definitions.
 
