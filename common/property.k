@@ -1,5 +1,5 @@
 schema CustomProperty:
-    r"""
+    """
     A key/value pair for custom properties.
 
     Attributes

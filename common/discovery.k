@@ -1,7 +1,7 @@
 type Tags = [str]
 
 schema TagsDiscoverable(AuthoritativeCustomizable):
-    r"""
+    """
     Base schema providing the common extension points shared across ODPS
     elements: tags, custom properties and authoritative definitions.
 

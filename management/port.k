@@ -2,7 +2,7 @@ import regex
 import common
 
 schema ManagementPort(common.TagsDiscoverable):
-    r"""
+    """
     Management port for managing the data product.
 
     Attributes

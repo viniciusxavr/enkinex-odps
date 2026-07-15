@@ -11,7 +11,7 @@ type ApiVersionType = "v0.9.0" | "v1.0.0"
 type StatusType = "proposed" | "draft" | "active" | "deprecated" | "retired"
 
 schema DataProduct(common.TagsDiscoverable):
-    r"""
+    """
     An open data product standard descriptor to enable defining data products.
 
     Attributes

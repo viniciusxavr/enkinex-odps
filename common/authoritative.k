@@ -1,7 +1,7 @@
 import regex
 
 schema AuthoritativeDefinition:
-    r"""
+    """
     A type/link pair for authoritative definitions.
 
     Attributes

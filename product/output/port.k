@@ -3,7 +3,7 @@ import product
 import product.input
 
 schema OutputPort(common.TagsDiscoverable):
-    r"""
+    """
     An output port describing promises.
 
     Attributes

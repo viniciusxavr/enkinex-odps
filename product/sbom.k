@@ -2,7 +2,7 @@ import regex
 import common
 
 schema Sbom:
-    r"""
+    """
     Software Bill of Materials.
 
     Attributes

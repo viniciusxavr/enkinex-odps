@@ -2,7 +2,7 @@ import regex
 import common
 
 schema Support(common.TagsDiscoverable):
-    r"""
+    """
     Support channel.
 
     Attributes

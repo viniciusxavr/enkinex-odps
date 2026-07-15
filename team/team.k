@@ -1,7 +1,7 @@
 import common
 
 schema Team(common.TagsDiscoverable):
-    r"""
+    """
     Team information.
 
     Attributes

@@ -1,5 +1,5 @@
 schema Description(AuthoritativeCustomizable):
-    r"""
+    """
     Object containing the descriptions.
 
     Attributes

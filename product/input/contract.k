@@ -1,5 +1,5 @@
 schema InputContract:
-    r"""
+    """
     Input contract dependency.
 
     Attributes

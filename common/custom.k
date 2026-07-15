@@ -1,5 +1,5 @@
 schema AuthoritativeCustomizable:
-    r"""
+    """
     Base schema providing the common extension points shared across ODPS
     elements: custom properties and authoritative definitions.
 
