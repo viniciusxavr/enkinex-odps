@@ -37,6 +37,6 @@ schema TeamMember(common.TagsDiscoverable):
     replacedByUsername?: str
 
     check:
-        regex.match(dateIn, r"^\d{4}-\d{2}-\d{2}$") if dateIn
-        regex.match(dateOut, r"^\d{4}-\d{2}-\d{2}$") if dateOut
+        regex.match(dateIn, common.datePattern) if dateIn
+        regex.match(dateOut, common.datePattern) if dateOut
 
