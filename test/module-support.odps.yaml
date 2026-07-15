@@ -1,0 +1,46 @@
+apiVersion: v0.9.0
+kind: DataProduct
+id: 66666666-6666-4666-8666-666666666666
+name: Support Channels Test
+status: active
+
+support:
+  - channel: "Support Email"
+    url: "mailto:data-support@enkinex.example"
+    description: "Primary email support channel"
+    tool: email
+    scope: issues
+  - channel: "Data Team Slack"
+    url: "https://enkinex.slack.com/archives/C0000000001"
+    description: "Interactive Slack channel for data product questions"
+    tool: slack
+    scope: interactive
+    invitationUrl: "https://enkinex.slack.com/invite/ABC123"
+    tags: ["slack", "realtime"]
+    customProperties:
+      - property: responseTimeSlaHours
+        value: 4
+    authoritativeDefinitions:
+      - type: implementation
+        url: "https://git.enkinex.example/repo/slack-bot"
+  - channel: "Announcements Teams Channel"
+    url: "https://teams.microsoft.com/l/channel/announcements"
+    description: "Announcement-only channel"
+    tool: teams
+    scope: announcements
+  - channel: "Community Discord"
+    url: "https://discord.gg/enkinex-example"
+    description: "Community discussion server"
+    tool: discord
+    scope: interactive
+    invitationUrl: "https://discord.gg/invite-code"
+  - channel: "Issue Tracker"
+    url: "https://issues.enkinex.example/project/DATA"
+    description: "Ticketing system for reporting problems"
+    tool: ticket
+    scope: issues
+  - channel: "Other Channel"
+    url: "https://other.enkinex.example/support"
+    description: "Catch-all support tool"
+    tool: other
+    scope: interactive

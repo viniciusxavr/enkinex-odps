@@ -1,0 +1,46 @@
+apiVersion: v1.0.0
+kind: DataProduct
+id: 77777777-7777-4777-8777-777777777777
+name: Team Test
+status: draft
+
+team:
+  name: "Customer Insights Team"
+  description: "Owns and maintains the customer insights data products"
+  tags: ["team", "customer-insights"]
+  customProperties:
+    - property: costCenter
+      value: "CC-4821"
+    - property: teamSize
+      value: 6
+  authoritativeDefinitions:
+    - type: businessDefinition
+      url: "https://glossary.enkinex.example/team-charter"
+    - type: implementation
+      url: "https://wiki.enkinex.example/team-runbook"
+  members:
+    - username: "alice@enkinex.example"
+      name: "Alice Nakamura"
+      description: "Data Product Owner"
+      role: "owner"
+      dateIn: "2022-01-10"
+      tags: ["owner"]
+      customProperties:
+        - property: seniority
+          value: "senior"
+      authoritativeDefinitions:
+        - type: businessDefinition
+          url: "https://people.enkinex.example/alice"
+    - username: "bob@enkinex.example"
+      name: "Bob Alvarez"
+      description: "Former Data Steward, replaced"
+      role: "data steward"
+      dateIn: "2021-06-01"
+      dateOut: "2023-12-31"
+      replacedByUsername: "carol@enkinex.example"
+    - username: "carol@enkinex.example"
+      name: "Carol Singh"
+      description: "Current Data Steward"
+      role: "data steward"
+      dateIn: "2024-01-02"
+    - username: "dave@enkinex.example"
