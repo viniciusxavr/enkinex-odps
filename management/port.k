@@ -11,7 +11,7 @@ schema ManagementPort(common.TagsDiscoverable):
         Endpoint identifier or unique name.
     content : str, required
         Content type.
-    $type : str, optional, default is "rest"
+    $type : str, default is "rest", optional
         Type: can be `rest` or `topic`. Default is `rest`.
     url : str, optional
         URL to access the endpoint.

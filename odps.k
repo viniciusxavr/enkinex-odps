@@ -16,9 +16,9 @@ schema DataProduct(common.TagsDiscoverable):
 
     Attributes
     ----------
-    apiVersion : "v0.9.0" | "v1.0.0", required, default is "v1.0.0"
+    apiVersion : "v0.9.0" | "v1.0.0", default is "v1.0.0", required
         Version of the standard used to build data product. Default value is v1.0.0.
-    kind : "DataProduct", required, default is "DataProduct"
+    kind : "DataProduct", default is "DataProduct", required
         The kind of file this is. Valid value is `DataProduct`.
     id : str, required
         A unique identifier used to reduce the risk of dataset name collisions, such as a UUID.

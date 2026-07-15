@@ -7,7 +7,7 @@ schema Sbom:
 
     Attributes
     ----------
-    $type : str, optional, default is "external"
+    $type : str, default is "external", optional
         Type of SBOM.
     url : str, required
         URL to the SBOM.
