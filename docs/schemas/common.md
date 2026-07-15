@@ -9,6 +9,7 @@
 | `AuthoritativeDefinition` (`common/authoritative.k`) | `$defs.AuthoritativeDefinition` | 1:1; `check` validates `url` against `urlPattern` |
 | `urlPattern` (`common/url.k`) | `format: "uri"` (applied to `AuthoritativeDefinition.url`, `SBOM.url`, `ManagementPort.url`, `Support.url`/`.invitationUrl`) | Bare module-level regex constant, not a `$defs` entity |
 | `Tags` (`common/discovery.k`) | `$defs.Tags` | 1:1: `type Tags = [str]` |
+| `datePattern` (`common/date.k`) | `format: "date"` (applied to `team.TeamMember.dateIn`/`.dateOut`) | Bare module-level regex constant, not a `$defs` entity |
 | `AuthoritativeCustomizable` (`common/custom.k`) | no upstream equivalent | Synthesized base schema: see below |
 | `TagsDiscoverable` (`common/discovery.k`) | no upstream equivalent | Synthesized base schema: see below |
 
@@ -24,4 +25,4 @@
 
 - `urlPattern` is a best-effort regex, not a full RFC 3986 validator. If KCL ever ships a native URI-checking builtin, this constant should be replaced rather than hand-maintained further.
 - If KCL gains structural/duck-typed schema composition (satisfying a shape without nominal inheritance), the `AuthoritativeCustomizable`/`TagsDiscoverable` split could potentially collapse into a single schema with an optional `tags` field: revisit if that lands.
-- Date/date-time regexes (`team.TeamMember.dateIn`/`.dateOut`, `odps.DataProduct.productCreatedTs`) aren't centralized here even though they're conceptually similar to `urlPattern`. Only two consumers exist today, so the duplication was left as-is rather than adding a `common/date.k` for two call sites: worth centralizing if a third date-like field appears.
+- `team.TeamMember.dateIn`/`.dateOut` share a centralized `datePattern` (`common/date.k`), the same pattern as `urlPattern`. `odps.DataProduct.productCreatedTs` still keeps its own inline date-*time* regex rather than reusing `datePattern`, since the two formats differ (date-time vs. date-only): see [odps](odps.md).

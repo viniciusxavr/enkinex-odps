@@ -9,7 +9,7 @@
 
 ## Architecture Decisions
 
-- `TeamMember` keeps its own `check` block for `dateIn`/`dateOut` rather than folding date validation into a shared base, because `AuthoritativeCustomizable`/`TagsDiscoverable` (see [[common]]) only model the trio that's identical across *every* consumer. `dateIn`/`dateOut` are unique to `TeamMember` and don't belong in a shared base that only one schema uses.
+- `TeamMember` keeps its own `check` block for `dateIn`/`dateOut` rather than folding date validation into a shared base, because `AuthoritativeCustomizable`/`TagsDiscoverable` (see [common](common.md)) only model the trio that's identical across *every* consumer. `dateIn`/`dateOut` are unique to `TeamMember` and don't belong in a shared base that only one schema uses.
 - Added in this pass: `dateIn`/`dateOut` are now validated against `^\d{4}-\d{2}-\d{2}$` (ISO 8601 date), mirroring upstream's `format: "date"` on both fields. Previously they were unvalidated `str`, silently accepting any string.
 - `Team.members` stays a plain `[TeamMember]` list with no uniqueness check on `username`: matches upstream, which has no `uniqueItems` constraint on `members` either.
 

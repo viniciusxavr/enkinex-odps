@@ -8,8 +8,8 @@
 
 ## Architecture Decisions
 
-- `OutputPort` imports both `product` (for `Sbom`, see [[product]]) and `product.input` (for `InputContract`, see [[product-input]]): it's the only schema in the port that reaches across three packages (`common`, `product`, `product.input`) for its fields. This reflects that an output port is the most composite entity in the standard: it's the thing that carries a contract, a version, an SBOM, and its list of upstream dependencies all at once.
-- `$type` is optional and stays open `str`: upstream provides no `examples` at all for this field (unlike `ManagementPort.type` or `Support.tool`, see [[management]]/[[support]]), so there was even less basis to close it than the other `examples`-only fields discussed elsewhere in this port.
+- `OutputPort` imports both `product` (for `Sbom`, see [product](product.md)) and `product.input` (for `InputContract`, see [product-input](product-input.md)): it's the only schema in the port that reaches across three packages (`common`, `product`, `product.input`) for its fields. This reflects that an output port is the most composite entity in the standard: it's the thing that carries a contract, a version, an SBOM, and its list of upstream dependencies all at once.
+- `$type` is optional and stays open `str`: upstream provides no `examples` at all for this field (unlike `ManagementPort.type` or `Support.tool`, see [management](management.md)/[support](support.md)), so there was even less basis to close it than the other `examples`-only fields discussed elsewhere in this port.
 
 ## Open Questions
 
