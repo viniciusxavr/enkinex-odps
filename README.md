@@ -199,8 +199,13 @@ just docs      # runs: kcl doc generate --escape-html
 
 ## Contributing
 
-Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) and the
-contributor list in [AUTHORS.md](AUTHORS.md).
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md), the
+contributor list in [AUTHORS.md](AUTHORS.md), and our
+[Code of Conduct](CODE_OF_CONDUCT.md).
+
+For notable changes per release and which upstream ODPS version this
+library tracks, see [CHANGELOG.md](CHANGELOG.md) and
+[history.md](history.md).
 
 ## License
 
